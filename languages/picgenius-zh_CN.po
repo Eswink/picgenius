@@ -1,0 +1,120 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PicGenius\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-04-27 12:30+0000\n"
+"PO-Revision-Date: 2023-04-27 21:36+0800\n"
+"Last-Translator: Eswink <2675395607@qq.com>\n"
+"Language-Team: \n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.2.2\n"
+"X-Loco-Version: 2.6.1; wp-6.2\n"
+"X-Domain: picgenius\n"
+
+#. Description of the plugin
+msgid ""
+"\"PicGenius\" is an AI-powered image generation plugin. By inputting text "
+"content, it can automatically create high-quality and highly customized "
+"images, helping users quickly generate visual content that meets their "
+"needs. No design or programming skills are required to easily create "
+"stunning visual works."
+msgstr ""
+"“PicGenius”是一个人工智能驱动的图像生成插件。通过输入文本内容，它可以自动创"
+"建高质量、高度定制的图像，帮助用户快速生成满足其需求的视觉内容。不需要任何设"
+"计或编程技能就能轻松创作出令人惊叹的视觉作品。"
+
+#: inc/classes/picgenius-acf.php:97
+msgid "Add background images"
+msgstr "添加背景图像"
+
+#: inc/classes/picgenius-acf.php:101
+msgid "Background Image"
+msgstr "背景图片"
+
+#: inc/classes/picgenius-acf.php:94
+msgid "Background Images"
+msgstr "背景图像"
+
+#: inc/classes/picgenius-acf.php:39
+msgid ""
+"Configure the following settings to generate images with specified text and "
+"styles. After setting up the plug-in, you only need to click to publish the "
+"article, and the corresponding picture will be automatically generated for "
+"the article."
+msgstr ""
+"配置以下设置以生成具有指定文本和样式的图像。设置好插件后，只需点击即可发布文"
+"章，就会自动为文章生成相应的图片."
+
+#: inc/classes/picgenius-acf.php:58
+msgid "Copyright"
+msgstr "版权信息"
+
+#: inc/classes/picgenius-acf.php:36
+msgid "Description"
+msgstr "描述"
+
+#: inc/classes/picgenius-acf.php:48
+msgid "Enable PicGenius"
+msgstr "启用PicGenius"
+
+#: inc/classes/picgenius-acf.php:51
+msgid "Enable this option to turn on PicGenius functionality."
+msgstr "启用此选项可启用PicGenius功能，否则无法为文章生成图片."
+
+#: inc/classes/picgenius-acf.php:61
+msgid "Enter the Copyright."
+msgstr "输入版权信息."
+
+#. Author of the plugin
+msgid "Eswlnk(HotSpot AI)"
+msgstr "Eswlnk(HotSpot AI)"
+
+#: inc/classes/picgenius-acf.php:66
+msgid "File Selector"
+msgstr "文件选择器"
+
+#. URI of the plugin
+#. Author URI of the plugin
+msgid "https://blog.eswlnk.com"
+msgstr "https://blog.eswlnk.com"
+
+#: inc/classes/picgenius-acf.php:30
+msgid "Image Settings"
+msgstr "图像设置"
+
+#. Name of the plugin
+#: inc/classes/picgenius-acf.php:19
+msgid "PicGenius"
+msgstr "PicGenius"
+
+#: inc/classes/picgenius-acf.php:18
+msgid "PicGenius Settings"
+msgstr "PicGenius 设置"
+
+#: inc/classes/picgenius-acf.php:75
+msgid "Post Type"
+msgstr "文章类型"
+
+#: inc/classes/picgenius-acf.php:69
+msgid "Select a font for the image."
+msgstr "选择生成图像的字体."
+
+#: inc/classes/picgenius-acf.php:104
+msgid "Select an image for image generation."
+msgstr "选择要生成图像的图像."
+
+#: inc/classes/picgenius-acf.php:78
+msgid "Select the post types to include in the image generation."
+msgstr "选择要包含在图像生成中的文章类型."
+
+#: inc/classes/picgenius-acf.php:89
+msgid "Select the text color for the image."
+msgstr "选择图像的文本颜色."
+
+#: inc/classes/picgenius-acf.php:86
+msgid "Text Color"
+msgstr "文本颜色"
