@@ -4,25 +4,38 @@ require_once 'classes/TextToImage.php';
 
 use PicGenius\Utils\TextToImage;
 
-function picgenius_update_post_meta($post_id)
+// 在发布或更新文章时插入图片
+add_action('edit_post', 'picgenius_update_post_meta', 10, 2);
+
+function picgenius_update_post_meta($post_id, $post)
 {
     if (get_post_status($post_id) != 'publish') {
         return;
     }
     // 只监听文章和页面类型
-    $post = get_post($post_id);
     if (!in_array($post->post_type, array('post', 'page'))) {
         return;
     }
 
-    $post_title = $post->post_title;
-    $filename   = PicGenuis_DIR_PATH . 'inc/media/' . time() . rand(1000, 9999) . '.png';
+    // 获取之前保存的标题和内容
+    $prev_title   = get_post_meta($post_id, '_picgenius_prev_title', true);
+    $prev_content = get_post_meta($post_id, '_picgenius_prev_content', true);
 
-    $generated_image_url = generate_picgenius_image($post_title, $filename);
+    // 如果标题或内容未发生变化，则不执行生成图片的操作
+    if ($post->post_title === $prev_title && $post->post_content === $prev_content) {
+        return;
+    }
+
+    $filename = PicGenuis_DIR_PATH . 'inc/media/' . time() . rand(1000, 9999) . '.png';
+
+    $generated_image_url = generate_picgenius_image($post->post_title, $filename);
 
     // 保存图片地址
     if ($generated_image_url) {
         update_post_meta($post_id, '_picgenius_generated_image', $generated_image_url);
+        // 更新保存的标题和内容
+        update_post_meta($post_id, '_picgenius_prev_title', $post->post_title);
+        update_post_meta($post_id, '_picgenius_prev_content', $post->post_content);
     }
 }
 
@@ -45,9 +58,6 @@ function picgenius_display_generated_image($content)
     $generated_image_html = '<div><img src="' . esc_attr($generated_image_url) . '"  width="960" height="640" style="margin-bottom:20px"/></div>';
     return $generated_image_html . $content;
 }
-
-// 在发布或更新文章时插入图片
-add_action('save_post', 'picgenius_update_post_meta', 10, 1);
 
 // 在文章的开头显示生成的图片
 add_filter('the_content', 'picgenius_display_generated_image', 1);

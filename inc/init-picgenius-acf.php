@@ -32,6 +32,6 @@ function picgenius_load_textdomain($domain = 'picgenius')
     // 按照 WordPress 规范将语言文件存放在 /languages 目录下
     $lang_dir = PicGenuis_DIR_PATH . '/languages/';
 
-    var_dump(load_textdomain($domain, $lang_dir . $mofile));
+    load_textdomain($domain, $lang_dir . $mofile);
 
 }

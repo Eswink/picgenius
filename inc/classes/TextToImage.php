@@ -10,27 +10,28 @@ class TextToImage
     private $__textColor; // 文本颜色（RGB 数组）
     private $__backgroundColor; // 背景色（RGB 数组）
     private $__backgroundImage; // 背景图片路径
-    private $__copyright; //图片版权
+    private $__fontSize; // 字体大小
 
     /**
      * 构造函数。用于初始化对象的属性。
      *
      * @param integer $width 生成图片的宽度
      * @param integer $height 生成图片的高度
-     * @param string $fontPath 字体文件路径
+     * @param string|null $fontPath 字体文件路径
      * @param array $textColor 文本颜色（RGB 数组）
+     * @param integer $fontSize 字体大小
      * @param array $backgroundColor 背景色（RGB 数组）
-     * @param string $image_path 背景图片路径
+     * @param string|null $image_path 背景图片路径
      */
-    public function __construct($width = 500, $height = 100, $fontPath = null, $textColor = [0, 0, 0], $fontSize, $backgroundColor = [255, 255, 255], $image_path = null)
+    public function __construct($width = 500, $height = 100, $fontPath = null, $textColor = [0, 0, 0], $fontSize = 12, $backgroundColor = [255, 255, 255], $image_path = null)
     {
         $this->__width           = $width;
         $this->__height          = $height;
-        $this->__fontPath        = $fontPath ?? realpath(PicGenuis_DIR_PATH . 'inc\assets\fonts\LXGWWenKai-Regular.ttf');
+        $this->__fontPath        = $fontPath ?? realpath(PicGenuis_DIR_PATH . 'inc' . DIRECTORY_SEPARATOR . 'assets' . DIRECTORY_SEPARATOR . 'fonts' . DIRECTORY_SEPARATOR . 'LXGWWenKai-Regular.ttf');
         $this->__textColor       = $textColor;
+        $this->__fontSize        = $fontSize;
         $this->__backgroundColor = $backgroundColor;
         $this->__backgroundImage = $image_path;
-        $this->__fontSize        = $fontSize;
     }
 
     /**
@@ -105,7 +106,7 @@ class TextToImage
 
         } else {
             // 获取文本框信息
-            $textbox = imagettfbbox($fontSize, 0, $this->__fontPath, $text);
+            $textbox = imagettfbbox($this->__fontSize, 0, $this->__fontPath, $text);
 
             // 获取文本宽度
             $textWidth = abs($textbox[4] - $textbox[0]);
@@ -114,10 +115,10 @@ class TextToImage
             $x = (imagesx($img) - $textWidth) / 2;
 
             // 计算文本纵向居中位置
-            $y = (imagesy($img) + $fontSize) / 2;
+            $y = (imagesy($img) + $this->__fontSize) / 2;
 
             // 在图片上绘制文本
-            imagettftext($img, $fontSize, 0, $x, $y, $textColor, $this->__fontPath, $text);
+            imagettftext($img, $this->__fontSize, 0, $x, $y, $textColor, $this->__fontPath, $text);
         }
 
         $addon_text = $this->__copyright;
@@ -138,6 +139,8 @@ class TextToImage
         if ($filename !== null) {
             return $filename;
         }
+
+        return null;
     }
 
     public function setWidth($width)
@@ -168,6 +171,11 @@ class TextToImage
     public function setBackgroundImage($backgroundImage)
     {
         $this->__backgroundImage = $backgroundImage;
+    }
+
+    public function setFontSize($fontSize)
+    {
+        $this->__fontSize = $fontSize;
     }
 
     public function setCopyright($copyright)
@@ -206,5 +214,4 @@ class TextToImage
         // 返回包含红、绿、蓝三个部分的 RGB 数组
         return array($red, $green, $blue);
     }
-
 }
