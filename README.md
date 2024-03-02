@@ -31,3 +31,8 @@
 1.0.0
 
 > 上传新插件
+
+
+## 插件预览
+![image](https://github.com/Eswink/picgenius/assets/20827973/1d406807-4fa5-4a21-a3cd-5aa597c60f9c)
+
